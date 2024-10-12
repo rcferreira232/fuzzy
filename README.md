@@ -111,4 +111,4 @@ A lógica fuzzy permite manipular incertezas e subjetividades, proporcionando um
 
 ### Pergunta
 
-Com base nas regras e na tabela de pertinência definida para os preços dos carros e o impacto dos amassados no valor do seguro, determine qual seria o valor do seguro para um carro avaliado em R$ 30.000,00 que apresenta 3 amassados. Utilize as classificações fuzzy para "Preço do Carro" e "Condição Física" (número de amassados) para realizar o cálculo.
+Com base nas regras e na tabela de pertinência definida para os preços dos carros e o impacto dos amassados no valor do seguro, determine qual seria o valor do seguro para um carro avaliado em R$ 30.000,00 que apresenta 1 amassados. Utilize as classificações fuzzy para "Preço do Carro" e "Condição Física" (número de amassados) para realizar o cálculo.
