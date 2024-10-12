@@ -238,8 +238,8 @@ function defuzzificacao(valorDoCarro, nAmassados) {
 
   const resultado = somaSaida / somaGraus
 
-  console.log('Grau de Pertinência do Valor do Carro: \n', grausValorCarro)
-  console.log('Grau de Pertinência dos Amassados: \n', grausNumAmassados)
+  console.log('Grau de Pertinência do Valor do Carro: ', grausValorCarro)
+  console.log('Grau de Pertinência dos Amassados: ', grausNumAmassados)
   console.log('Regras: ', grausSaidaRegras)
   console.log('Valor da Saída de Cada Regra: ', valorSaida)
   console.log('Somatório Saída: ', somaSaida)
