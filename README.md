@@ -81,13 +81,13 @@ A lógica fuzzy permite manipular incertezas e subjetividades, proporcionando um
 
 #### Valor do Seguro
 
-| Conjunto Nebuloso | 0   | 500 | 1000 | 2000 | 3000 | 5000 | 10000 |
-| ----------------- | --- | --- | ---- | ---- | ---- | ---- | ----- |
-| Muito Baixo (MB)  | 1   | 0.8 | 0.4  | 0    | 0    | 0    | 0     |
-| Baixo (B)         | 0   | 0.6 | 1    | 0.8  | 0.4  | 0    | 0     |
-| Médio (M)         | 0   | 0   | 0.6  | 1    | 0.8  | 0.4  | 0     |
-| Alto (A)          | 0   | 0   | 0    | 0.6  | 1    | 0.8  | 0.4   |
-| Muito Alto (MA)   | 0   | 0   | 0    | 0    | 0.5  | 1    | 0.8   |
+| Conjunto Nebuloso | 0   | 500 | 1000 | 2000 | 3000 | 3500 | 5000 | 10000 |
+| ----------------- | --- | --- | ---- | ---- | ---- | ---- | ---- | ----- |
+| Muito Baixo (MB)  | 1   | 0.8 | 0.4  | 0    | 0    | 0    | 0    | 0     |
+| Baixo (B)         | 0   | 0.6 | 1    | 0.8  | 0.4  | 0.3  | 0    | 0     |
+| Médio (M)         | 0   | 0   | 0.6  | 1    | 0.8  | 0.6  | 0.4  | 0     |
+| Alto (A)          | 0   | 0   | 0    | 0.6  | 1    | 0.9  | 0.8  | 0.4   |
+| Muito Alto (MA)   | 0   | 0   | 0    | 0    | 0.5  | 0.75 | 1    | 1     |
 
 ## Regras
 
@@ -107,7 +107,7 @@ A lógica fuzzy permite manipular incertezas e subjetividades, proporcionando um
 ### Dados
 
 - **Preço do Carro**: R$ 30.000,00
-- **Número de Amassados**: 3 amassados
+- **Número de Amassados**: 1 amassado
 
 ### Pergunta
 
