@@ -101,6 +101,7 @@ const valorSeguro = {
     1000: 0.4,
     2000: 0,
     3000: 0,
+    3500: 0,
     5000: 0,
     10000: 0,
   },
@@ -110,6 +111,7 @@ const valorSeguro = {
     1000: 1,
     2000: 0.8,
     3000: 0.4,
+    3500: 0.3,
     5000: 0,
     10000: 0,
   },
@@ -119,6 +121,7 @@ const valorSeguro = {
     1000: 0.6,
     2000: 1,
     3000: 0.8,
+    3500: 0.6,
     5000: 0.4,
     10000: 0,
   },
@@ -128,6 +131,7 @@ const valorSeguro = {
     1000: 0,
     2000: 0.6,
     3000: 1,
+    3500: 0.9,
     5000: 0.8,
     10000: 0.4,
   },
@@ -137,8 +141,9 @@ const valorSeguro = {
     1000: 0,
     2000: 0,
     3000: 0.5,
+    3500: 0.75,
     5000: 1,
-    10000: 0.8,
+    10000: 1,
   },
 }
 
@@ -152,6 +157,10 @@ const valorSeguro = {
 // - **Regra 8**: **A** e **VAM** → **MA**
 // - **Regra 9**: **MA** e **ALG** → **A**
 // - **Regra 10**: **MA** e **MAM** → **MA**
+
+const findKeyByValue = (obj, value) => {
+  return Object.keys(obj).find((key) => obj[key] === value)
+}
 
 function defuzzificacao(valorDoCarro, nAmassados) {
   const grausValorCarro = {
@@ -184,9 +193,58 @@ function defuzzificacao(valorDoCarro, nAmassados) {
     R10: Math.min(grausValorCarro.MA, grausNumAmassados.MAM),
   }
 
-  console.log('Grau do Carros', grausValorCarro)
-  console.log('Grau do Amassados', grausNumAmassados)
-  console.log('Grau de Saída das Regras', grausSaidaRegras)
+  // Calculo do valor de saída
+  const valorSaida = {
+    SR1:
+      Number(findKeyByValue(valorSeguro.MB, grausSaidaRegras.R1)) *
+      grausSaidaRegras.R1,
+    SR2:
+      Number(findKeyByValue(valorSeguro.B, grausSaidaRegras.R2)) *
+      grausSaidaRegras.R2,
+    SR3:
+      Number(findKeyByValue(valorSeguro.B, grausSaidaRegras.R3)) *
+      grausSaidaRegras.R3,
+    SR4:
+      Number(findKeyByValue(valorSeguro.M, grausSaidaRegras.R4)) *
+      grausSaidaRegras.R4,
+    SR5:
+      Number(findKeyByValue(valorSeguro.M, grausSaidaRegras.R5)) *
+      grausSaidaRegras.R5,
+    SR6:
+      Number(findKeyByValue(valorSeguro.A, grausSaidaRegras.R6)) *
+      grausSaidaRegras.R6,
+    SR7:
+      Number(findKeyByValue(valorSeguro.A, grausSaidaRegras.R7)) *
+      grausSaidaRegras.R7,
+    SR8:
+      Number(findKeyByValue(valorSeguro.MA, grausSaidaRegras.R8)) *
+      grausSaidaRegras.R8,
+    SR9:
+      Number(findKeyByValue(valorSeguro.A, grausSaidaRegras.R9)) *
+      grausSaidaRegras.R9,
+    SR10:
+      Number(findKeyByValue(valorSeguro.MA, grausSaidaRegras.R10)) *
+      grausSaidaRegras.R10,
+  }
+
+  const somaSaida = Object.values(valorSaida).reduce(
+    (acc, curr) => acc + curr,
+    0
+  )
+  const somaGraus = Object.values(grausSaidaRegras).reduce(
+    (acc, curr) => acc + curr,
+    0
+  )
+
+  const resultado = somaSaida / somaGraus
+
+  console.log('Grau de Pertinência do Valor do Carro: \n', grausValorCarro)
+  console.log('Grau de Pertinência dos Amassados: \n', grausNumAmassados)
+  console.log('Regras: ', grausSaidaRegras)
+  console.log('Valor da Saída de Cada Regra: ', valorSaida)
+  console.log('Somatório Saída: ', somaSaida)
+  console.log('Somatório Graus: ', somaGraus)
+  console.log('Valor do Seguro: ', resultado)
 }
 
-defuzzificacao(30000, 3)
+defuzzificacao(30000, 1)
